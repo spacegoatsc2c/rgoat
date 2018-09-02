@@ -1,2 +1,30 @@
 <h1>Hello, Rails!</h1>
-<%= link_to 'My Blog', controller: 'articles' %>
+<%= link_to '[Login]', '/auth/bnet' %>
+
+<table>
+<% @characters.each do | character | %>
+  <tr>
+    <td><img src="<%= character.portrait %>"></td>
+    <td><%= character.name %></td>
+    <td><%= character.ilvl %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<table>
+<% @bosses.each do | boss | %>
+  <tr>
+    <td><%= boss.name %></td>
+    <td><%= boss.zone %></td>
+    <td><ul>
+    <% boss.Npcs.each do | npc | %>
+      <li>
+      <span><%= npc.name %></span>
+      <img src="<%= npc.image %>">
+      </li>
+    <% end %>
+    </ul></td>
+  </tr>
+<% end %>
+</table>

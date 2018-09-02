@@ -10,22 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_02_014457) do
+ActiveRecord::Schema.define(version: 2018_09_02_213714) do
 
-  create_table "articles", force: :cascade do |t|
-    t.string "title"
-    t.text "text"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "bosses", force: :cascade do |t|
+    t.string "name"
+    t.string "zone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.string "commenter"
-    t.text "body"
-    t.integer "article_id"
+  create_table "characters", force: :cascade do |t|
+    t.string "name"
+    t.string "realm"
+    t.integer "ilvl"
+    t.string "class_name"
+    t.string "portrait"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["article_id"], name: "index_comments_on_article_id"
   end
 
+  create_table "npcs", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.bigint "boss_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["boss_id"], name: "index_npcs_on_boss_id"
+  end
+
+  add_foreign_key "npcs", "bosses"
 end

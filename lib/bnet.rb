@@ -1,5 +1,3 @@
-require 'HTTParty'
-
 class Battlenet
   include HTTParty
   base_uri 'https://us.api.battle.net'
@@ -17,6 +15,11 @@ class Battlenet
   def character(realm:, name:)
     options = {query: @options[:query].merge({fields: 'items'})}
     self.class.get("/wow/character/#{realm}/#{name}", options)
+  end
+
+  def characters(access_token:)
+    options = {query: {access_token: access_token}}
+    self.class.get("/wow/user/characters", options)
   end
 
   def zones
@@ -73,6 +76,6 @@ unless ENV['BNET_API']
   puts "missing BNET_API environment variable"
   exit
 end
-bnet = Battlenet.new(locale: "en_us", api_key: ENV['BNET_API'])
-print_character_ilevels bnet
-print_all_bosses bnet
+# bnet = Battlenet.new(locale: "en_us", api_key: ENV['BNET_API'])
+# print_character_ilevels bnet
+# print_all_bosses bnet

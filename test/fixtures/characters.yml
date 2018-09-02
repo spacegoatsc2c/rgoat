@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+thenmal:
+  name: Thenmal
+  ilvl: 338
+  class_name: Shaman
+  portrait: https://render-us.worldofwarcraft.com/character/whisperwind/204/106175436-avatar.jpg
+
+Aset:
+  name: Aset
+  realm: Whisperwind
+  ilvl: 342
+  class_name: Druid
+  portrait: https://render-us.worldofwarcraft.com/character/whisperwind/246/108238326-avatar.jpg

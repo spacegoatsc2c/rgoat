@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  text: MyText
+  name: MyString
+  image: MyString
+  boss: one
 
 two:
-  title: MyString
-  text: MyText
+  name: MyString
+  image: MyString
+  boss: two
