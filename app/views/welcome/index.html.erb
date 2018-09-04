@@ -6,7 +6,7 @@
       <% if session[:current_character_id] %>
       <div class="logged_in_portrait">
         <h2><%= @character.name %></h2>
-        <img class="character_portrait" src="<%= @character.portrait %>">
+        <img class="login_portrait" src="<%= @character.portrait %>">
       </div>
       <%= link_to '[New Video]', new_youtube_path %>
       <%= link_to '[Logut]', logout_path %>
@@ -17,15 +17,15 @@
 
     <div class="character_roster">
       <h3>&lt;<%= Rails.configuration.wow['guild'] %>&gt;</h3>
-      <table>
+      <div class="roster_table">
       <% @characters.each do | character | %>
-        <tr>
-          <td><%= character.name %></td>
-          <td><%= character.ilvl %></td>
-          <td><img src="<%= character.portrait %>"></td>
-        </tr>
+        <div class="roster_character <%= character.class_name %>">
+          <span class="character_name"><%= character.name %></span>
+          <span class="character_ilvl"><%= character.ilvl %></span>
+          <img class="character_portrait" src="<%= character.portrait %>">
+        </div>
       <% end %>
-      </table>
+      </div>
     </div>
 
     <div class="current_bosses">

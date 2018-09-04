@@ -24,7 +24,7 @@
   color: white;
 }
 
-.character_portrait {
+.login_portrait {
   //clip-path: circle(50%);
   border: 3px #707F8C solid;
   border-radius: 50%;
@@ -74,4 +74,79 @@
   color: white;
   filter: drop-shadow(2px 2px 2px #000);
   margin-left: 20px;
+}
+
+.roster_character {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  border-left-style: solid;
+  border-left-width: 4px;
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+
+.character_name {
+  grid-column: 1;
+  align-self: center;
+  padding-left: 1em;
+}
+
+.character_ilvl {
+  grid-column: 2;
+  align-self: center;
+}
+
+.character_portrait {
+  width: 50px;
+  height: 50px;
+  grid-column: 3;
+  align-self: center;
+}
+
+.Druid {
+  border-color: orange;
+}
+
+.Warlock {
+  border-color: purple;
+}
+
+.Shaman {
+  border-color: blue;
+}
+
+.Monk {
+  border-color: teal;
+}
+
+.Paladin {
+  border-color: pink;
+}
+
+.Mage {
+  border-color: lightblue;
+}
+
+.Rogue {
+  border-color: yellow;
+}
+
+.Hunter {
+  border-color: green;
+}
+
+.Warrior {
+  border-color: brown;
+}
+
+.Death {
+  border-color: red;
+}
+
+.Demon {
+  border-color: purple;
+}
+
+.Priest {
+  border-color: grey;
 }
