@@ -22,7 +22,7 @@
         <div class="roster_character <%= character.class_name %>">
           <span class="character_name"><%= character.name %></span>
           <span class="character_ilvl"><%= character.ilvl %></span>
-          <img class="character_portrait" src="<%= character.portrait %>">
+          <a class="character_portrait" href="https://worldofwarcraft.com/en-us/character/<%= character.realm %>/<%= character.name %>"><img src="<%= character.portrait %>"></a>
         </div>
       <% end %>
       </div>
