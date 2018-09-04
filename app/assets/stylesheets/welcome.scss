@@ -38,6 +38,10 @@
   flex-direction: column;
 }
 
+.guild_name {
+  font-size: .9em;
+}
+
 .main-content {
   grid-area: main;
   display: flex;
@@ -59,6 +63,7 @@
   width: 480px;
   height: 272px;
   background-position: 0px -44px;
+  background-size: 480px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
