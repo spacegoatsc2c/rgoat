@@ -8,8 +8,10 @@
         <h2><%= @character.name %></h2>
         <img class="login_portrait" src="<%= @character.portrait %>">
       </div>
-      <%= link_to '[New Video]', new_youtube_path %>
-      <%= link_to '[Logut]', logout_path %>
+      <div class="login_buttons">
+        <%= link_to 'New Video', new_youtube_path, { :class => "new_video_button"} %>
+        <%= link_to 'Logut', logout_path, { :class => "logout_button" } %>
+      </div>
       <% else %>
       <%= link_to '[Login]', '/auth/bnet' %>
       <% end %>

@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .container {
   display: grid;
-  grid-template-columns: auto 200px;
+  grid-template-columns: auto 250px;
   grid-template-rows: auto;
   grid-template-areas:
     "header header"
@@ -74,6 +74,31 @@
   height: 40px;
   margin-left: 20px;
   filter: drop-shadow(2px 2px 2px #000);
+}
+
+.login_buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.login_buttons a {
+  text-decoration: none;
+  color: white;
+  margin-top: .5em;
+}
+
+.logout_button {
+  background-color: darkred;
+  border: 3px red solid;
+  outline: 1px black solid;
+  padding: 5px;
+}
+
+.new_video_button {
+  background-color: darkgreen;
+  border: 3px green solid;
+  outline: 1px black solid;
+  padding: 5px;
 }
 
 .description {
