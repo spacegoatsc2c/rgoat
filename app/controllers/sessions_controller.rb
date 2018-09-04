@@ -2,7 +2,7 @@ require 'bnet'
 
 class SessionsController < ApplicationController
   def create
-    puts request.env['omniauth.auth'].credintials
+    puts request.env['omniauth.auth'].credintials.token
     render plain: request.env['omniauth.auth'].inspect
     # bnet = Battlenet.new(locale: "en_us", api_key: ENV['BNET_API'])
     # guild = bnet.guild(realm: "Whisperwind", name: "Space Goats CoastToCoast")
