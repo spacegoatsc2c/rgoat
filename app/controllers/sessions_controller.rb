@@ -11,8 +11,8 @@ class SessionsController < ApplicationController
     bnet = Battlenet.new(locale: "en_us", api_key: ENV['BNET_API'])
     users_characters = bnet.characters(access_token: token)
     users_characters['characters'].each do | character |
-      if character.fetch('guild', nil) == 'Space Goats CoastToCoast' &&
-         character.fetch('realm') == 'Whisperwind'
+      if character.fetch('guild', nil) == Rails.configuration.wow['guild'] &&
+         character.fetch('realm') == Rails.configuration.wow['realm']
         c = Character.find_or_create_by(name: character['name'],
                                         realm: character['realm'])
         c.update(portrait: bnet.character_image(character: character),

@@ -15,6 +15,23 @@
   text-decoration: none;
 }
 
+.logged_in_portrait {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 3px #162238 solid;
+  background-color: #324359;
+  color: white;
+}
+
+.character_portrait {
+  //clip-path: circle(50%);
+  border: 3px #707F8C solid;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+}
+
 .sidebar {
   grid-area: sidebar;
   display: flex;

@@ -6,7 +6,7 @@ class UpdateCharactersJob < ApplicationJob
   def perform(*args)
     # Do something later
     bnet = Battlenet.new(locale: "en_us", api_key: ENV['BNET_API'])
-    guild = bnet.guild(realm: "Whisperwind", name: "Space Goats CoastToCoast")
+    guild = bnet.guild(realm: Rails.configuration.wow['realm'], name: Rails.configuration.wow['guild'])
     classes = bnet.classes
     class_names = {}
     classes['classes'].each do | c |
@@ -14,7 +14,7 @@ class UpdateCharactersJob < ApplicationJob
     end
     guild['members'].each do | member |
       if member['character']['level'] == 120
-        character = bnet.character(realm: "Whisperwind", name: member['character']['name'])
+        character = bnet.character(realm: Rails.configuration.wow['realm'], name: member['character']['name'])
         c = Character.find_or_create_by(name: character['name'], realm: character['realm'])
         c.update(ilvl: character['items']['averageItemLevel'],
                  level: character['level'],

@@ -4,16 +4,19 @@
   <div class="sidebar">
     <div class="login_info">
       <% if session[:current_character_id] %>
-      <img src="<%= @character.portrait %>">
-      <p><%= @character.name %></p>
-      <%= link_to 'Link to Video', new_youtube_path %>
+      <div class="logged_in_portrait">
+        <h2><%= @character.name %></h2>
+        <img class="character_portrait" src="<%= @character.portrait %>">
+      </div>
+      <%= link_to '[New Video]', new_youtube_path %>
       <%= link_to '[Logut]', logout_path %>
       <% else %>
       <%= link_to '[Login]', '/auth/bnet' %>
-      <% end if %>
+      <% end %>
     </div>
 
     <div class="character_roster">
+      <h3>&lt;<%= Rails.configuration.wow['guild'] %>&gt;</h3>
       <table>
       <% @characters.each do | character | %>
         <tr>
