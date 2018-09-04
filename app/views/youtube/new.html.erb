@@ -1,0 +1,19 @@
+Upload a new video
+
+<%= form_with scope: :youtube, url: youtube_index_path, local: true do |form| %>
+  <%= form.hidden_field(:character_id, :value => @character.id) %>
+  <p>
+    <%= form.label :link %><br>
+    <%= form.text_field :link %>
+  </p>
+  <p>
+    <%= collection_select(:youtube, :boss_id,
+                          Boss.where.not(patch: nil).order(patch: :desc),
+                          :id, :name,
+                          {include_blank: 'None'}) %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

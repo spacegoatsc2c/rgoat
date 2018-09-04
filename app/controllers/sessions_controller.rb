@@ -4,6 +4,8 @@ class SessionsController < ApplicationController
   def create
     token = request.env['omniauth.auth']['credentials']['token']
     token = ENV['BNET_TOKEN'] unless Rails.env.production?
+    session[:current_character_id] = 1 unless Rails.env.production?
+    return redirect_to '/' unless Rails.env.production?
     session[:bnet_token] = token
     @characters = Array.new
     bnet = Battlenet.new(locale: "en_us", api_key: ENV['BNET_API'])
@@ -28,7 +30,7 @@ class SessionsController < ApplicationController
 
   def logout
     session[:current_character_id] = nil
-    session[:token] = nil
+    session[:bnet_token] = nil
     redirect_to '/'
   end
 end

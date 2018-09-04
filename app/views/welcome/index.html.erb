@@ -1,20 +1,53 @@
-<h1>Hello, Rails!</h1>
-<% if session[:current_character_id] %>
-<img src="<%= @character.portrait %>">
-<p><%= @character.name %></p>
-<%= link_to '[Logut]', logout_path %>
-<% else %>
-<%= link_to '[Login]', '/auth/bnet' %>
-<% end if %>
+<div class="container">
+  <h1 class="header"><%= link_to 'Space Goats', welcome_index_path %></h1>
 
-<%= select("name", "zone", @bosses, {include_blank: 'None'}) %>
+  <div class="sidebar">
+    <div class="login_info">
+      <% if session[:current_character_id] %>
+      <img src="<%= @character.portrait %>">
+      <p><%= @character.name %></p>
+      <%= link_to 'Link to Video', new_youtube_path %>
+      <%= link_to '[Logut]', logout_path %>
+      <% else %>
+      <%= link_to '[Login]', '/auth/bnet' %>
+      <% end if %>
+    </div>
 
-<table>
-<% @characters.each do | character | %>
-  <tr>
-    <td><img src="<%= character.portrait %>"></td>
-    <td><%= character.name %></td>
-    <td><%= character.ilvl %></td>
-  </tr>
-<% end %>
-</table>
+    <div class="character_roster">
+      <table>
+      <% @characters.each do | character | %>
+        <tr>
+          <td><%= character.name %></td>
+          <td><%= character.ilvl %></td>
+          <td><img src="<%= character.portrait %>"></td>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+
+    <div class="current_bosses">
+      <h3>Patch <%= @patch %></h3>
+      <table>
+      <% @bosses.each do | boss | %>
+        <tr>
+          <td><%= boss.name %></td>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+
+  <div class="main-content">
+  <% @youtubes.each do | youtube | %>
+    <div class="video">
+      <a class="video_link" href="https://www.youtube.com/watch?v=<%=youtube.link%>">
+        <div class="thumbnail" style="background-image:url('https://img.youtube.com/vi/<%=youtube.link%>/hqdefault.jpg')">
+            <img class="play_button" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/YouTube_light_logo_%282017%29.svg/512px-YouTube_light_logo_%282017%29.svg.png">
+            <h1 class="description"><%=youtube.boss.name%></h1>
+            <span class="description">[<%=youtube.character.name%>]</span>
+        </div>
+      </a>
+    </div>
+  <% end %>
+  </div>
+</div>
