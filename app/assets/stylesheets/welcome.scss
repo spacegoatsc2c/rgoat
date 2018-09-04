@@ -38,10 +38,6 @@
   flex-direction: column;
 }
 
-.guild_name {
-  font-size: .9em;
-}
-
 .main-content {
   grid-area: main;
   display: flex;
@@ -83,20 +79,21 @@
 
 .login_buttons a {
   text-decoration: none;
-  color: white;
+  color: black;
+  font-weight: bold;
   margin-top: .5em;
 }
 
 .logout_button {
-  background-color: darkred;
-  border: 3px red solid;
+  background-color: #ffa9b1;
+  border: 3px #cc3341 solid;
   outline: 1px black solid;
   padding: 5px;
 }
 
 .new_video_button {
-  background-color: darkgreen;
-  border: 3px green solid;
+  background-color: #9dcdff;
+  border: 3px #0063ce solid;
   outline: 1px black solid;
   padding: 5px;
 }
