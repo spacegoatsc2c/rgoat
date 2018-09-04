@@ -2,15 +2,18 @@ require 'bnet'
 
 class SessionsController < ApplicationController
   def create
-    puts request.env['omniauth.auth']['credentials']['token']
-    render plain: request.env['omniauth.auth'].inspect
-    # bnet = Battlenet.new(locale: "en_us", api_key: ENV['BNET_API'])
-    # guild = bnet.guild(realm: "Whisperwind", name: "Space Goats CoastToCoast")
-    # classes = bnet.classes
-    # class_names = {}
-    # classes['classes'].each do | c |
-    #   class_names[c['id']] = c['name']
-    # end
-    # bnet.characters(access_token: request.env['onmiauth.auth'].credentials.token)
+    token = request.env['omniauth.auth']['credentials']['token']
+    @characters = Array.new
+    bnet = Battlenet.new(locale: "en_us", api_key: ENV['BNET_API'])
+    users_characters = bnet.characters(access_token: token)
+    users_characters['characters'].each do | character |
+      if character.fetch('guild') == 'Space Goats CoastToCoast' &&
+         character.fetch('realm') == 'Whisperwind'
+        c = Character.find_or_create_by(name: character['name'],
+                                        portrait: bnet.character_image(character: character),
+                                        realm: character['realm'])
+        @characters.push(c)
+      end
+    end
   end
 end
