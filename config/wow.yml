@@ -1,3 +1,9 @@
 development:
   guild: Space Goats CoastToCoast
   realm: Whisperwind
+test:
+  guild: Space Goats CoastToCoast
+  realm: Whisperwind
+production:
+  guild: Space Goats CoastToCoast
+  realm: Whisperwind
