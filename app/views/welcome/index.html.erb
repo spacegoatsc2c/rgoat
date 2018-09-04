@@ -1,5 +1,11 @@
 <h1>Hello, Rails!</h1>
+<% if session[:current_character_id] %>
+<img src="<%= @character.portrait %>">
+<p><%= @character.name %></p>
+<%= link_to '[Logut]', logout_path %>
+<% else %>
 <%= link_to '[Login]', '/auth/bnet' %>
+<% end if %>
 
 <%= select("name", "zone", @bosses, {include_blank: 'None'}) %>
 

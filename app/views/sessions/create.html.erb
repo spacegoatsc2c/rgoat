@@ -1,0 +1,10 @@
+Hello fellow Space Goat, select a primary character below.
+<table>
+<% @characters.each do | character | %>
+  <tr>
+      <td><img src="<%= character.portrait %>"></td>
+      <td><%= link_to character.name, pick_path(character.id) %></td>
+      <td><%= character.level %></td>
+  </tr>
+<% end %>
+</table>
