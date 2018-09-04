@@ -1,5 +1,7 @@
 <div class="container">
-  <h1 class="header"><%= link_to 'Space Goats', welcome_index_path %></h1>
+  <div class="header" style="background-image:url('https://goats.space/static/headers/header<%= rand(1..17) %>.jpg')">
+    <%= link_to 'Space Goats', welcome_index_path %>
+  </div>
 
   <div class="sidebar">
     <div class="login_info">
