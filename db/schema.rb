@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_02_213714) do
+ActiveRecord::Schema.define(version: 2018_09_04_032638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2018_09_02_213714) do
     t.string "zone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "patch"
   end
 
   create_table "characters", force: :cascade do |t|
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 2018_09_02_213714) do
     t.string "portrait"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "level"
   end
 
   create_table "npcs", force: :cascade do |t|
@@ -39,6 +41,16 @@ ActiveRecord::Schema.define(version: 2018_09_02_213714) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["boss_id"], name: "index_npcs_on_boss_id"
+  end
+
+  create_table "youtubes", force: :cascade do |t|
+    t.string "link"
+    t.bigint "character_id"
+    t.bigint "boss_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["boss_id"], name: "index_youtubes_on_boss_id"
+    t.index ["character_id"], name: "index_youtubes_on_character_id"
   end
 
   add_foreign_key "npcs", "bosses"
