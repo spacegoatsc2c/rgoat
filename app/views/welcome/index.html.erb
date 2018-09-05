@@ -12,10 +12,12 @@
       </div>
       <div class="login_buttons">
         <%= link_to 'New Video', new_youtube_path, { :class => "new_video_button"} %>
-        <%= link_to 'Logut', logout_path, { :class => "logout_button" } %>
+        <%= link_to 'Logout', logout_path, { :class => "logout_button" } %>
       </div>
       <% else %>
-      <%= link_to '[Login]', '/auth/bnet' %>
+      <div class="login_buttons">
+        <%= link_to 'Login', '/auth/bnet', { :class => "new_video_button" } %>
+      </div>
       <% end %>
     </div>
 
