@@ -1,4 +1,4 @@
-require 'bnet'
+require 'bnet_api'
 
 class UpdateBossesJob < ApplicationJob
   queue_as :default
