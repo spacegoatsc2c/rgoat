@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     return redirect_to '/' unless Rails.env.production?
     session[:bnet_token] = token
     @characters = Array.new
-    bnet = Battlenet.new(locale: "en_us", api_key: ENV['BNET_API'])
+    bnet = Battlenet.new(locale: "en_us", api_key: Rails.application.credentials.bnet[:api_key])
     users_characters = bnet.characters(access_token: token)
     users_characters['characters'].each do | character |
       if character.fetch('guild', nil) == Rails.configuration.wow['guild'] &&

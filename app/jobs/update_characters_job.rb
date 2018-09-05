@@ -5,7 +5,7 @@ class UpdateCharactersJob < ApplicationJob
 
   def perform(*args)
     # Do something later
-    bnet = Battlenet.new(locale: "en_us", api_key: ENV['BNET_API'])
+    bnet = Battlenet.new(locale: "en_us", api_key: Rails.application.credentials.bnet[:api_key])
     guild = bnet.guild(realm: Rails.configuration.wow['realm'], name: Rails.configuration.wow['guild'])
     classes = bnet.classes
     class_names = {}

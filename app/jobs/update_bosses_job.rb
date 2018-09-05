@@ -5,7 +5,7 @@ class UpdateBossesJob < ApplicationJob
 
   def perform(*args)
     # Do something later
-    bnet = Battlenet.new(locale: "en_us", api_key: ENV['BNET_API'])
+    bnet = Battlenet.new(locale: "en_us", api_key: Rails.application.credentials.bnet[:api_key])
     bnet.zones['zones'].each do | zone |
       if zone['isRaid'] == true
         zone['bosses'].each do | boss |
