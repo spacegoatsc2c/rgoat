@@ -3,7 +3,8 @@ class UpdateRanksJob < ApplicationJob
 
   def perform(*args)
     Rank.delete_all
-    Character.all.order(ilvl: :desc).each_with_index do | character, index |
+    max_level = Character.maximum(:level)
+    Character.where(level: max_level).order(ilvl: :desc).each_with_index do | character, index |
       Rank.create(character: character, ilvl: character.ilvl, position: index)
     end
   end
