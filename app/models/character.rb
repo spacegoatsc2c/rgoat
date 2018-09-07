@@ -1,7 +1,7 @@
 class Character < ApplicationRecord
   class NoRank
     def position
-      nil
+      Character.count
     end
 
     def ilvl
