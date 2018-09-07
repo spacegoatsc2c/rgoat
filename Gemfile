@@ -64,3 +64,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "omniauth-bnet", "~> 1.1"
 
 gem "httparty", "~> 0.16.2"
+
+gem "pry", "~> 0.11.3"

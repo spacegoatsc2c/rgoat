@@ -24,10 +24,20 @@
     <div class="character_roster">
       <h3 class="guild_name">&lt;<%= Rails.configuration.wow['guild'] %>&gt;</h3>
       <div class="roster_table">
-      <% @characters.each do | character | %>
+      <% @characters.each_with_index do | character, index | %>
         <div class="roster_character <%= character.class_name %>">
           <span class="character_name"><%= character.name %></span>
-          <span class="character_ilvl"><%= character.ilvl %></span>
+          <span class="character_ilvl">
+            <%= character.ilvl %>
+            <% if character.ilvl != character.rank.ilvl %>
+            (+<%= character.ilvl - character.rank.ilvl %>)
+            <% end %>
+            <% if index > character.rank.position %>
+            ▲<%= index - character.rank.position %>
+            <% elsif index < character.rank.position %>
+            ▼<%= character.rank.position - index %>
+            <% end %>
+          </span>
           <a class="character_portrait" href="https://worldofwarcraft.com/en-us/character/<%= character.realm %>/<%= character.name %>"><img src="<%= character.portrait %>"></a>
         </div>
       <% end %>
