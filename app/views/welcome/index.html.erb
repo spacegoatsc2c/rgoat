@@ -33,9 +33,9 @@
             (+<%= character.ilvl - character.rank.ilvl %>)
             <% end %>
             <% if index > character.rank.position %>
-            ▲<%= index - character.rank.position %>
+            ▼<%= index - character.rank.position %>
             <% elsif index < character.rank.position %>
-            ▼<%= character.rank.position - index %>
+            ▲<%= character.rank.position - index %>
             <% end %>
           </span>
           <a class="character_portrait" href="https://worldofwarcraft.com/en-us/character/<%= character.realm %>/<%= character.name %>"><img src="<%= character.portrait %>"></a>
